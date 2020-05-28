@@ -1,0 +1,23 @@
+{
+  "name": "palco",
+  "version": "1.0.0",
+  "description": "api for opera-related web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evagrean/palco.git"
+  },
+  "author": "Eva Greiner-Anzenbacher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evagrean/palco/issues"
+  },
+  "homepage": "https://github.com/evagrean/palco#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
