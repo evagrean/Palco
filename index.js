@@ -116,13 +116,13 @@ app.get('/operas/:title', (req, res) => {
 });
 
 // Gets data about a musical period by name
-app.get('/periods/:name', (req, res) => {
-  res.json(periods.find((period) => { return period.name === req.params.name }));
+app.get('/operas/periods/:name', (req, res) => {
+  res.send('Successul GET request returning period by name');
 });
 
 // Gets data about a composer by name
-app.get('/directors/:name', (req, res) => {
-  res.json(composers.find((composer) => { return director.name === req.params.name }));
+app.get('/operas/composers/:name', (req, res) => {
+  res.send('Successful GET request returning composer by name');
 });
 
 // User queries
@@ -133,37 +133,39 @@ app.get('/users', (req, res) => {
 });
 
 // Gets data about a single user, by name
-app.get('/users/:name', (req, res) => {
-  res.json(users.find((user) => { return user.name === req.params.name }));
+app.get('/users/:username', (req, res) => {
+  res.json(users.find((user) => { return user.username === req.params.username }));
 });
 
 // Adds a new user 
 app.post('/users', (req, res) => {
-  let newUser = req.body;
+  res.send('Successful POST user');
+  // let newUser = req.body;
 
-  if (!newUser.username) {
-    let message = 'Missing username in request body';
-    res.status(400).send(message);
-  } else {
-    newUser.id = uuid.v4();
-    users.push(newUser);
-    res.status(201).send(newUser);
-  }
+  // if (!newUser.username) {
+  //   let message = 'Missing username in request body';
+  //   res.status(400).send(message);
+  // } else {
+  //   newUser.id = uuid.v4();
+  //   users.push(newUser);
+  //   res.status(201).send(newUser);
+  // }
 });
 
 // Deletes user by id
 app.delete('users/:userId', (req, res) => {
-  let user = users.find((user) => { return user.id === req.params.id });
+  res.send('Successful DELETE user');
+  // let user = users.find((user) => { return user.id === req.params.id });
 
-  if (user) {
-    users = users.filter((obj) => { return obj.id !== req.params.id });
-    res.status(201).send('User' + req.params.id + ' was deleted.');
-  }
+  // if (user) {
+  //   users = users.filter((obj) => { return obj.id !== req.params.id });
+  //   res.status(201).send('User' + req.params.id + ' was deleted.');
+  // }
 });
 
 // Updates user data by username
 app.put('/users/:username', (req, res) => {
-  let user = users.find((user) => { return user.username === req.params.username });
+  // let user = users.find((user) => { return user.username === req.params.username });
 
   res.send('Successful PUT request returning updated user info');
   // let updatedUser = req.body;
@@ -181,7 +183,7 @@ app.put('/users/:username', (req, res) => {
 });
 
 // Adds opera to list of favorites by id
-app.post('users/:username/operas/:operaId', (req, res) => {
+app.post('/users/:username/operas/:operaId', (req, res) => {
   res.send('Successful POST request returning list of favorites');
 });
 
